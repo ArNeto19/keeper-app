@@ -1,15 +1,18 @@
 import React from "react";
-import notes from "../notes";
+import DeleteIcon from "@material-ui/icons/Delete";
 
-function Note() {
+function Note(props) {
   return (
-    <div>
-      {notes.map( notes =>
-        <div className="note">
-        <h1>{notes.title}</h1>
-        <p>{notes.content}</p>
-        </div>
-      )}
+    <div className="note">
+      <h1>{props.title}</h1>
+      <p>{props.content}</p>
+      <button
+        onClick={() => {
+          props.onDelete(props.index);
+        }}
+      >
+        <DeleteIcon />
+      </button>
     </div>
   );
 }
